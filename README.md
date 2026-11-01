@@ -21,3 +21,8 @@ Una vista es un elemento gráfico, como TextView, ButtonView, Widgets, ImageView
 
 Hay atributos en las vistas, se pueden hacer de forma porgramática, pero se suelen hacer por la interfaz que deciamos antes.
 
+Se tienen diferentes layouts/compemntens, el por defecto es el constrainslayout, que lo que hace es establecer los componentes/colocarlos en función de la relación posicional que tiene con otros componentes de la actividad. Todos los compoenntes que se inserten dentro tiene que estar definido su posicionamiento en función de otros componentes o de la pantalla principal.
+
+Para poder relacionarlo hay que darle al botón de infer constrains.
+
+![infer-constrains.png](imgs/infer-constrains.png)
