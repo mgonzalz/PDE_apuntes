@@ -7,10 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!--
+    Definimos parent como la pantalla principal.
+    Añadir identificador a la vista para poder acceder a ella y manipularla.
+    Podemos por el identificador recuperar la vista y modificar sus atributos de forma dinámica, o atribuirle atributos de manera estática con el layout.
+    -->
     <TextView
+        android:id="@+id/saludoTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="¡Hola Mundo!"
+        android:textColor="#00FF00"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

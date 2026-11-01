@@ -14,3 +14,10 @@ Android separa el entorno gráfico del código: `MainActivity.java` código de u
 
 - `app/src/main/res/layout/activity_main.xml`
 - `app/src/main/java/com/mgonzalz/basicapp/MainActivity.java`
+
+Los layouts son contenedores que permiten configurar/organizar componentes tales como textos, botones, etc. Se meten en un ConstrainsLayout, y está configurado según unos parámetros determinados. Por ej. Situar un botón según la pantalla principal y es adaptable.
+
+Una vista es un elemento gráfico, como TextView, ButtonView, Widgets, ImageView. Elementos que sirven apra cosntruir el interfaz gráfico. Todos los componentes/vistas se declaran en el layout `.xml`. Se utiliza para eso la interfaz gráfica proporcionada por Android Studio y se añade automáticamente al código.
+
+Hay atributos en las vistas, se pueden hacer de forma porgramática, pero se suelen hacer por la interfaz que deciamos antes.
+
