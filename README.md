@@ -106,3 +106,6 @@ para crear una actividad nueva, mejor desde el menu de android, creo ala clase y
 
 cambiamos el paquetes a activitues para organizarlo por paquetes:
 ![create-project-details.png](imgs/create-project-details.png)
+
+Los intnet peuden ser explicitos o implicitos. en lsopriemros espeicificamos al actividad a inicializar, por ej al pusar un boton que se inicie uan acitvidad.
+y en implciito lanzo un codigo y le digo la accion y el siempla elige la alicación a iniciar.

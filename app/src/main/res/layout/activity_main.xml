@@ -27,11 +27,11 @@
         app:layout_constraintVertical_bias="0.731" />
 
     <Button
-        android:id="@+id/btCambiarTexto"
+        android:id="@+id/btAcercaDe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="92dp"
-        android:text="Pulsame"
+        android:text="@string/btAcercaDe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

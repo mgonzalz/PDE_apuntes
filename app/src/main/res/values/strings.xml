@@ -9,4 +9,5 @@
     <string name="rbRestar">Restar</string>
     <string name="mensajeResultado">El resultado es el siguiente</string>
     <string name="btOperar">Operar</string>
+    <string name="btAcercaDe">Acerca de</string>
 </resources>

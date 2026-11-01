@@ -1,5 +1,6 @@
 package com.mgonzalz.basicapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,11 +15,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.mgonzalz.basicapp.activities.AcercaDeActivity;
+
 public class MainActivity extends AppCompatActivity {
     // Esta actividad es la que inicialmente se muestra. Viene por defecto.
 
     private TextView tvMensaje, tvResultado; // Clase en memoria para manipular el componente gráfico que asociamos abajo con findViewById.
-    private Button btCambiarTexto, btOperar;
+    private Button btAcercaDe, btOperar;
     private EditText editNumber1, editNumber2;
 
     private RadioButton rbSumar;
@@ -38,9 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void asignaComponentes(){
         tvMensaje = findViewById(R.id.tvMensaje); // Buscar en el layout asociado a la actividad, ese identificador, y se asigna a la variable.
-        btCambiarTexto = findViewById(R.id.btCambiarTexto);
+        btAcercaDe = findViewById(R.id.btAcercaDe);
         // btCambiarTexto.setOnClickListener(this::onBtCambiarTexto); // Asociar un oyente a un evento. De manera dinámica. Opción 1.
-        btCambiarTexto.setOnClickListener( v-> onBtCambiarTexto(v)); // Asociar un oyente a un evento. De manera dinámica. Opción 2.
+        btAcercaDe.setOnClickListener(v-> {
+            // Lanzar una actividad nueva. Para lanzar actividad nueva hay que instanciar un Intent.
+            Intent i = new Intent(this, AcercaDeActivity.class); // Intent EXPLÍCITO
+            startActivity(i);
+        });
         tvResultado = findViewById(R.id.tvResultado);
         editNumber1 = findViewById(R.id.editNumber1);
         editNumber2 = findViewById(R.id.editNumber2);
