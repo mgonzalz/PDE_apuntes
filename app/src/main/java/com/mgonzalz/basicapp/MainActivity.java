@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         editNumber1 = findViewById(R.id.editNumber1);
         editNumber2 = findViewById(R.id.editNumber2);
         btSumar = findViewById(R.id.btSumar);
+        btSumar.setOnClickListener(v -> onBtSumar(v)); // Asociar un oyente a un evento. De manera dinámica. Para la suma.
     }
 
     // Declaración de oyente, todos se declaran como un método que no devuelve nada y que recibe una View.
