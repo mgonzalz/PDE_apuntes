@@ -3,6 +3,7 @@ package com.mgonzalz.basicapp;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,9 @@ public class MainActivity extends AppCompatActivity {
     // Declaración de oyente, todos se declaran como un método que no devuelve nada y que recibe una View.
     public void onBtCambiarTexto(View v){
         tvMensaje.setText("Pulsaste el botón");
+        // Toast no está asociado a ninguna actividad.
+        // ApplicationContext sirve para acceder a los recursos de la aplicación. A diferencia de ActivityContext que solo sirve para la actividad.
+        Toast.makeText(getApplicationContext(), "Pulsaste el botón", Toast.LENGTH_SHORT).show();
     }
     // Asociación de un oyente a un evento de forma ESTÁTICA: Esto ocurre a través del layout en interfaz gráfica en Attributes > On Click.
     // Ahi salen todas las funciones asociadas a la vista que devuelvan VOID.
