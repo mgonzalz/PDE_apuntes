@@ -38,6 +38,19 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
+        android:id="@+id/editNumber2"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="332dp"
+        android:layout_marginEnd="36dp"
+        android:ems="10"
+        android:hint="Introduce el segundo número"
+        android:inputType="numberSigned"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editNumber1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
         android:id="@+id/editNumber1"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -49,39 +62,55 @@
         app:layout_constraintBottom_toBottomOf="@+id/editNumber2"
         app:layout_constraintEnd_toStartOf="@+id/editNumber2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editNumber2" />
-
-    <EditText
-        android:id="@+id/editNumber2"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="36dp"
-        android:ems="10"
-        android:hint="Introduce el segundo número"
-        android:inputType="numberSigned"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editNumber1"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btSumar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="5dp"
-        android:text="Sumar"
-        app:layout_constraintEnd_toStartOf="@+id/editNumber2"
-        app:layout_constraintTop_toBottomOf="@+id/editNumber2" />
+        app:layout_constraintTop_toTopOf="@+id/editNumber2"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/tvResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="4dp"
         android:text="El resultado es"
-        app:layout_constraintEnd_toEndOf="@+id/btSumar"
-        app:layout_constraintTop_toBottomOf="@+id/btSumar" />
+        app:layout_constraintEnd_toEndOf="@+id/btOperar"
+        app:layout_constraintTop_toBottomOf="@+id/btOperar" />
 
+    <Button
+        android:id="@+id/btOperar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="4dp"
+        android:text="Operar"
+        app:layout_constraintEnd_toStartOf="@+id/editNumber2"
+        app:layout_constraintTop_toBottomOf="@+id/editNumber2" />
+
+    <!--Los Radio Group permiten seleccionar una opción de un grupo de opciones.-->
+    <RadioGroup
+        android:id="@+id/rgOperacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="409dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNumber1"
+        app:layout_constraintVertical_bias="0.4">
+
+        <RadioButton
+            android:id="@+id/rbSumar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Sumar" />
+
+        <RadioButton
+            android:id="@+id/rbRestar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:text="Restar" />
+
+    </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,8 +18,10 @@ public class MainActivity extends AppCompatActivity {
     // Esta actividad es la que inicialmente se muestra. Viene por defecto.
 
     private TextView tvMensaje, tvResultado; // Clase en memoria para manipular el componente gráfico que asociamos abajo con findViewById.
-    private Button btCambiarTexto, btSumar;
+    private Button btCambiarTexto, btOperar;
     private EditText editNumber1, editNumber2;
+
+    private RadioButton rbSumar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,10 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        this.asignaComponentes(); // Reorganización más clean
+    }
+
+    private void asignaComponentes(){
         tvMensaje = findViewById(R.id.tvMensaje); // Buscar en el layout asociado a la actividad, ese identificador, y se asigna a la variable.
         btCambiarTexto = findViewById(R.id.btCambiarTexto);
         // btCambiarTexto.setOnClickListener(this::onBtCambiarTexto); // Asociar un oyente a un evento. De manera dinámica. Opción 1.
@@ -37,8 +44,10 @@ public class MainActivity extends AppCompatActivity {
         tvResultado = findViewById(R.id.tvResultado);
         editNumber1 = findViewById(R.id.editNumber1);
         editNumber2 = findViewById(R.id.editNumber2);
-        btSumar = findViewById(R.id.btSumar);
-        btSumar.setOnClickListener(v -> onBtSumar(v)); // Asociar un oyente a un evento. De manera dinámica. Para la suma.
+        btOperar = findViewById(R.id.btOperar);
+        btOperar.setOnClickListener(v -> onBtOperar(v)); // Asociar un oyente a un evento. De manera dinámica. Para la suma.
+        rbSumar = findViewById(R.id.rbSumar);
+
     }
 
     // Declaración de oyente, todos se declaran como un método que no devuelve nada y que recibe una View.
@@ -54,9 +63,15 @@ public class MainActivity extends AppCompatActivity {
     // Asociación dinámica, se asigna el oyente de forma programática, no está en el layout.
 
     // Forma estática:
-    public void onBtSumar(View v) {
+    public void onBtOperar(View v) {
         int numberOne = Integer.parseInt(editNumber1.getText().toString()); // Devuelve el número entero a partir del texto que contiene el edittext.
         int numberTwo = Integer.parseInt(editNumber2.getText().toString());
-        tvResultado.setText("El resultado es " + (numberOne + numberTwo));
+        int result = 0;
+        if (rbSumar.isChecked()) {
+            result = numberOne + numberTwo;
+        } else {
+            result = numberOne - numberTwo;
+        }
+        tvResultado.setText("El resultado es " + result);
     }
 }
