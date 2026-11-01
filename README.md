@@ -1,28 +1,99 @@
-# PDE_apuntes
-Inicio de proyecto:
-- Crear un proyecto: Empty View Activity
-- Poner lenguaje Java
-- Cambiar el pack a `<nombre>.<app>`
+# PDE - Apuntes de Android Studio
 
-Cuando el proyecto se inicie, lo primero que debemos de hacer es Set Up JDK con Android Studio.
+## Clase 1. Introducción a Android Studio
 
-![new-project-init.png](imgs/new-project-init.png)
+### 1. Creación del proyecto
 
-La vista por defecto de carpetas es la de Android. Sin embargo para ver el sistema de archivo, abrir vista de Project:
+Para crear un proyecto en Android Studio:
 
-Android separa el entorno gráfico del código: `MainActivity.java` código de una actividad, definimos actividad como una vista que se muestra en nuestra aplicación (podemos decir que es una pantalla); `activity_main.xml` como visualización, se le conoce como el layout. Al lanzar el proyecto como Empty Views Activity, automáticamente se genera una actividad main, el XML dicho anteriormente.
+1. Seleccionar **Empty Views Activity**.
+2. Elegir **Java** como lenguaje.
+3. Configurar el nombre del proyecto y el *Package name* (`com.nombre.app`).
+4. Configurar el **JDK** compatible con el proyecto si Android Studio lo solicita.
 
-- `app/src/main/res/layout/activity_main.xml`
-- `app/src/main/java/com/mgonzalz/basicapp/MainActivity.java`
+![Creación del proyecto](imgs/new-project-init.png)
 
-Los layouts son contenedores que permiten configurar/organizar componentes tales como textos, botones, etc. Se meten en un ConstrainsLayout, y está configurado según unos parámetros determinados. Por ej. Situar un botón según la pantalla principal y es adaptable.
+### 2. Estructura del proyecto
 
-Una vista es un elemento gráfico, como TextView, ButtonView, Widgets, ImageView. Elementos que sirven apra cosntruir el interfaz gráfico. Todos los componentes/vistas se declaran en el layout `.xml`. Se utiliza para eso la interfaz gráfica proporcionada por Android Studio y se añade automáticamente al código.
+Android Studio muestra por defecto la vista **Android**, que agrupa los archivos según su función. Para visualizar la estructura real de carpetas, seleccionamos la vista **Project**.
 
-Hay atributos en las vistas, se pueden hacer de forma porgramática, pero se suelen hacer por la interfaz que deciamos antes.
+Android separa principalmente el código de la interfaz gráfica:
 
-Se tienen diferentes layouts/compemntens, el por defecto es el constrainslayout, que lo que hace es establecer los componentes/colocarlos en función de la relación posicional que tiene con otros componentes de la actividad. Todos los compoenntes que se inserten dentro tiene que estar definido su posicionamiento en función de otros componentes o de la pantalla principal.
+- **`MainActivity.java`**: contiene la lógica de la actividad. Una *Activity* representa un componente que normalmente gestiona una pantalla de la aplicación.
+- **`activity_main.xml`**: define la interfaz gráfica de esa pantalla, conocida como *layout*.
 
-Para poder relacionarlo hay que darle al botón de infer constrains.
+Al crear un proyecto con *Empty Views Activity*, Android Studio genera ambos archivos automáticamente.
 
-![infer-constrains.png](imgs/infer-constrains.png)
+Rutas habituales:
+
+```text
+app/src/main/
+├── java/com/mgonzalz/basicapp/MainActivity.java
+└── res/layout/activity_main.xml
+```
+
+Para relacionar la actividad con su layout utilizamos:
+
+```java
+setContentView(R.layout.activity_main);
+```
+
+### 3. Layouts, vistas y atributos
+
+Un **layout** es un contenedor que organiza los elementos gráficos de una pantalla.
+
+Las **vistas (Views)** son los componentes de la interfaz, por ejemplo:
+
+- `TextView`: muestra texto.
+- `Button`: botón interactivo.
+- `EditText`: permite introducir texto.
+- `ImageView`: muestra imágenes.
+
+Cada vista tiene **atributos** que definen sus propiedades, como el tamaño, el texto o la posición. Se pueden configurar desde el XML, mediante el editor visual o programáticamente desde Java.
+
+#### ConstraintLayout
+
+`ConstraintLayout` permite posicionar componentes mediante restricciones respecto a otros elementos o al contenedor principal (`parent`).
+
+Las restricciones principales son:
+
+| Restricción | Posición |
+|---|---|
+| `Top` | Arriba |
+| `Bottom` | Abajo |
+| `Start` | Izquierda (habitualmente) |
+| `End` | Derecha (habitualmente) |
+
+Para generar automáticamente las restricciones desde el editor visual podemos utilizar **Infer Constraints**.
+
+![Infer Constraints](imgs/infer-constrains.png)
+
+### 4. Gestión de eventos
+
+Los eventos permiten ejecutar acciones cuando el usuario interactúa con una vista, por ejemplo, al pulsar un botón.
+
+Existen dos formas de asociar eventos:
+
+**Asociación estática:** se declara directamente en el XML mediante `android:onClick`.
+
+```xml
+android:onClick="onBtCambiarTexto"
+```
+
+**Asociación dinámica:** se configura desde Java mediante un listener.
+
+```java
+btCambiarTexto.setOnClickListener(v -> onBtCambiarTexto(v));
+```
+
+En ambos casos podemos utilizar el mismo método:
+
+```java
+public void onBtCambiarTexto(View v) {
+    Toast.makeText(this, "Pulsaste el botón", Toast.LENGTH_SHORT).show();
+}
+```
+
+`Toast` muestra un mensaje temporal en pantalla. El `Context` proporciona acceso al entorno de Android y `.show()` muestra el mensaje.
+
+**Diferencia principal:** la asociación estática se declara en el XML, mientras que la dinámica se establece desde Java durante la ejecución, ofreciendo mayor flexibilidad.
