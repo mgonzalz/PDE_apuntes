@@ -3,6 +3,7 @@ package com.mgonzalz.basicapp;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,8 +16,9 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
     // Esta actividad es la que inicialmente se muestra. Viene por defecto.
 
-    private TextView tvMensaje; // Clase en memoria para manipular el componente gráfico que asociamos abajo con findViewById.
-    private Button btCambiarTexto;
+    private TextView tvMensaje, tvResultado; // Clase en memoria para manipular el componente gráfico que asociamos abajo con findViewById.
+    private Button btCambiarTexto, btSumar;
+    private EditText editNumber1, editNumber2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,10 @@ public class MainActivity extends AppCompatActivity {
         btCambiarTexto = findViewById(R.id.btCambiarTexto);
         // btCambiarTexto.setOnClickListener(this::onBtCambiarTexto); // Asociar un oyente a un evento. De manera dinámica. Opción 1.
         btCambiarTexto.setOnClickListener( v-> onBtCambiarTexto(v)); // Asociar un oyente a un evento. De manera dinámica. Opción 2.
+        tvResultado = findViewById(R.id.tvResultado);
+        editNumber1 = findViewById(R.id.editNumber1);
+        editNumber2 = findViewById(R.id.editNumber2);
+        btSumar = findViewById(R.id.btSumar);
     }
 
     // Declaración de oyente, todos se declaran como un método que no devuelve nada y que recibe una View.
@@ -45,4 +51,11 @@ public class MainActivity extends AppCompatActivity {
     // Ahi salen todas las funciones asociadas a la vista que devuelvan VOID.
 
     // Asociación dinámica, se asigna el oyente de forma programática, no está en el layout.
+
+    // Forma estática:
+    public void onBtSumar(View v) {
+        int numberOne = Integer.parseInt(editNumber1.getText().toString()); // Devuelve el número entero a partir del texto que contiene el edittext.
+        int numberTwo = Integer.parseInt(editNumber2.getText().toString());
+        tvResultado.setText("El resultado es " + (numberOne + numberTwo));
+    }
 }
