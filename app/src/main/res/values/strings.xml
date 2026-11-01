@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">Basic App</string>
+    <string name="app_name">Aplicación Básica</string>
+    <!--Almacenar los textos que utiliza tu aplicación en un único lugar, en vez de escribirlos directamente en cada componente
+        - Reutilización: puedes utilizar el mismo texto en varios botones o pantallas.
+        - Mantenimiento: si quieres cambiar "Sumar" por "Calcular", solo modificas strings.xml.
+        - Traducciones: puedes tener los textos de tu aplicación en diferentes idiomas.
+     -->
+    <string name="rbSumar">Sumar</string>
+    <string name="rbRestar">Restar</string>
+    <string name="mensajeResultado">El resultado es el siguiente</string>
+    <string name="btOperar">Operar</string>
 </resources>

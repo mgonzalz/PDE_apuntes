@@ -72,6 +72,6 @@ public class MainActivity extends AppCompatActivity {
         } else {
             result = numberOne - numberTwo;
         }
-        tvResultado.setText("El resultado es " + result);
+        tvResultado.setText(getText(R.string.mensajeResultado) + " " + result);
     }
 }
