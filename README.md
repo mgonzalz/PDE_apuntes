@@ -97,3 +97,12 @@ public void onBtCambiarTexto(View v) {
 `Toast` muestra un mensaje temporal en pantalla. El `Context` proporciona acceso al entorno de Android y `.show()` muestra el mensaje.
 
 **Diferencia principal:** la asociación estática se declara en el XML, mientras que la dinámica se establece desde Java durante la ejecución, ofreciendo mayor flexibilidad.
+
+
+Las actividades las podemos entender como pantallas, oncrate es el metood de cliclo de vida, 
+los intents son objetos en los qe descrbiimos operaciones y estas oepraciones pueden ser de distitnos tipos, como actividad neuva, un servicio en segundo plano o enviar un broadcast.
+para crear una actividad nueva, mejor desde el menu de android, creo ala clase y el layout ascaido file ->new -< activity -< empty views activity y asignar nombre.
+![create-project.png](imgs/create-project.png)
+
+cambiamos el paquetes a activitues para organizarlo por paquetes:
+![create-project-details.png](imgs/create-project-details.png)
