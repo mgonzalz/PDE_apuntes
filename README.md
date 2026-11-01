@@ -99,13 +99,67 @@ public void onBtCambiarTexto(View v) {
 **Diferencia principal:** la asociación estática se declara en el XML, mientras que la dinámica se establece desde Java durante la ejecución, ofreciendo mayor flexibilidad.
 
 
-Las actividades las podemos entender como pantallas, oncrate es el metood de cliclo de vida, 
-los intents son objetos en los qe descrbiimos operaciones y estas oepraciones pueden ser de distitnos tipos, como actividad neuva, un servicio en segundo plano o enviar un broadcast.
-para crear una actividad nueva, mejor desde el menu de android, creo ala clase y el layout ascaido file ->new -< activity -< empty views activity y asignar nombre.
-![create-project.png](imgs/create-project.png)
+## Clase 2. Actividades e Intents
 
-cambiamos el paquetes a activitues para organizarlo por paquetes:
-![create-project-details.png](imgs/create-project-details.png)
+### 1. Actividades y ciclo de vida
 
-Los intnet peuden ser explicitos o implicitos. en lsopriemros espeicificamos al actividad a inicializar, por ej al pusar un boton que se inicie uan acitvidad.
-y en implciito lanzo un codigo y le digo la accion y el siempla elige la alicación a iniciar.
+Las **Activities** son componentes de Android que podemos entender como las pantallas de nuestra aplicación.
+
+Cada actividad tiene un **ciclo de vida**, compuesto por distintos métodos que Android ejecuta según su estado.
+
+Uno de los principales es `onCreate()`, que se ejecuta al crear la actividad y permite inicializar sus componentes y configurar la interfaz gráfica.
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+}
+```
+
+### 2. Creación de una nueva Activity
+
+Para crear una actividad desde Android Studio, seleccionamos el paquete correspondiente y seguimos la ruta:
+
+**New → Activity → Empty Views Activity**
+
+Android Studio generará automáticamente la clase Java y su layout XML asociado.
+
+![Crear nueva Activity](imgs/create-project.png)
+
+Para organizar mejor el proyecto, podemos crear las actividades dentro de un paquete específico, por ejemplo, `activities`.
+
+![Configuración de la Activity](imgs/create-project-details.png)
+
+### 3. Intents
+
+Los **Intents** son objetos que permiten solicitar operaciones a otros componentes de Android.
+
+Se utilizan, por ejemplo, para:
+
+- Iniciar una nueva actividad.
+- Iniciar un servicio.
+- Enviar un *broadcast*.
+
+Existen dos tipos principales:
+
+**Intent explícito:** especificamos directamente el componente que queremos iniciar. Por ejemplo, abrir otra pantalla al pulsar un botón.
+
+```java
+Intent intent = new Intent(this, SecondActivity.class);
+startActivity(intent);
+```
+
+**Intent implícito:** indicamos la acción que queremos realizar, pero no especificamos qué aplicación debe ejecutarla. Android busca las aplicaciones compatibles y resuelve cuál utilizar.
+
+Por ejemplo, abrir una página web:
+
+```java
+Intent intent = new Intent(
+    Intent.ACTION_VIEW,
+    Uri.parse("https://www.google.com")
+);
+startActivity(intent);
+```
+
+**Diferencia principal:** en los Intents explícitos indicamos el componente de destino, mientras que en los implícitos indicamos la acción y Android determina qué aplicación puede realizarla.
