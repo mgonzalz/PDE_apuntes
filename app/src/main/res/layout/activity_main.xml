@@ -14,22 +14,23 @@
     Podemos por el identificador recuperar la vista y modificar sus atributos de forma dinámica, o atribuirle atributos de manera estática con el layout.
     -->
     <TextView
-        android:id="@+id/saludoTextView"
+        android:id="@+id/tvMensaje"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="¡Hola Mundo!"
-        android:textColor="#00FF00"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btCambiarTexto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="168dp"
-        android:text="Button"
+        android:onClick="onBtCambiarTexto"
+        android:text="Pulsame"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
