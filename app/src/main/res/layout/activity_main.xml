@@ -14,89 +14,73 @@
     Podemos por el identificador recuperar la vista y modificar sus atributos de forma dinámica, o atribuirle atributos de manera estática con el layout.
     -->
 
-    <TextView
-        android:id="@+id/tvMensaje"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="¡Hola Mundo!"
-        android:textColor="#000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.731" />
-
     <Button
         android:id="@+id/btAcercaDe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="92dp"
+        android:layout_marginBottom="120dp"
         android:text="@string/btAcercaDe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/editNumber2"
-        android:layout_width="0dp"
+        android:layout_width="98dp"
         android:layout_height="48dp"
-        android:layout_marginTop="332dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
-        android:hint="Introduce el segundo número"
+        android:hint="Segundo número"
         android:inputType="numberSigned"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.074"
         app:layout_constraintStart_toEndOf="@+id/editNumber1"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!--Los Radio Group permiten seleccionar una opción de un grupo de opciones.-->
+
     <EditText
         android:id="@+id/editNumber1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginEnd="104dp"
+        android:layout_width="98dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="92dp"
         android:ems="10"
-        android:hint="Introduce el primer número"
+        android:hint="Primer número"
         android:inputType="numberSigned"
-        app:layout_constraintBottom_toBottomOf="@+id/editNumber2"
-        app:layout_constraintEnd_toStartOf="@+id/editNumber2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/editNumber2"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:layout_marginEnd="4dp"
         android:text="@string/mensajeResultado"
-        app:layout_constraintEnd_toEndOf="@+id/btOperar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btOperar" />
 
     <Button
         android:id="@+id/btOperar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="44dp"
         android:text="@string/btOperar"
-        app:layout_constraintEnd_toStartOf="@+id/editNumber2"
-        app:layout_constraintTop_toBottomOf="@+id/editNumber2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editNumber1" />
 
-    <!--Los Radio Group permiten seleccionar una opción de un grupo de opciones.-->
     <RadioGroup
         android:id="@+id/rgOperacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="409dp"
+        android:layout_marginTop="32dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNumber1"
-        app:layout_constraintVertical_bias="0.4">
+        app:layout_constraintTop_toBottomOf="@+id/tvResultado">
 
         <RadioButton
             android:id="@+id/rbSumar"
