@@ -1,6 +1,8 @@
 package com.mgonzalz.basicapp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,5 +24,13 @@ public class AcercaDeActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        recuperaDatosPadre();
+    }
+
+    private void recuperaDatosPadre(){
+        TextView tvDatain = findViewById(R.id.tvDatain);
+        Intent intent = getIntent();
+        int resOperation = intent.getIntExtra("resOperation", 0);
+        tvDatain.setText("El resultado recibido es " + resOperation);
     }
 }

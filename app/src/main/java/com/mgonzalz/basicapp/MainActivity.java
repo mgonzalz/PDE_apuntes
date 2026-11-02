@@ -20,11 +20,12 @@ import com.mgonzalz.basicapp.activities.AcercaDeActivity;
 public class MainActivity extends AppCompatActivity {
     // Esta actividad es la que inicialmente se muestra. Viene por defecto.
 
-    private TextView tvMensaje, tvResultado; // Clase en memoria para manipular el componente gráfico que asociamos abajo con findViewById.
+    private TextView tvResultado; // Clase en memoria para manipular el componente gráfico que asociamos abajo con findViewById.
     private Button btAcercaDe, btOperar;
     private EditText editNumber1, editNumber2;
 
     private RadioButton rbSumar;
+    private int resultado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +41,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void asignaComponentes(){
-        tvMensaje = findViewById(R.id.tvMensaje); // Buscar en el layout asociado a la actividad, ese identificador, y se asigna a la variable.
         btAcercaDe = findViewById(R.id.btAcercaDe);
         // btCambiarTexto.setOnClickListener(this::onBtCambiarTexto); // Asociar un oyente a un evento. De manera dinámica. Opción 1.
         btAcercaDe.setOnClickListener(v-> {
             // Lanzar una actividad nueva. Para lanzar actividad nueva hay que instanciar un Intent.
             Intent i = new Intent(this, AcercaDeActivity.class); // Intent EXPLÍCITO
+            i.putExtra("resOperation", resultado);
             startActivity(i);
         });
         tvResultado = findViewById(R.id.tvResultado);
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     // Declaración de oyente, todos se declaran como un método que no devuelve nada y que recibe una View.
     public void onBtCambiarTexto(View v){
-        tvMensaje.setText("Pulsaste el botón");
+        // tvMensaje.setText("Pulsaste el botón");
         // Toast no está asociado a ninguna actividad.
         // ApplicationContext sirve para acceder a los recursos de la aplicación. A diferencia de ActivityContext que solo sirve para la actividad.
         Toast.makeText(getApplicationContext(), "Pulsaste el botón", Toast.LENGTH_SHORT).show();
@@ -73,12 +74,12 @@ public class MainActivity extends AppCompatActivity {
     public void onBtOperar(View v) {
         int numberOne = Integer.parseInt(editNumber1.getText().toString()); // Devuelve el número entero a partir del texto que contiene el edittext.
         int numberTwo = Integer.parseInt(editNumber2.getText().toString());
-        int result = 0;
+        resultado = 0;
         if (rbSumar.isChecked()) {
-            result = numberOne + numberTwo;
+            resultado = numberOne + numberTwo;
         } else {
-            result = numberOne - numberTwo;
+            resultado = numberOne - numberTwo;
         }
-        tvResultado.setText(getText(R.string.mensajeResultado) + " " + result);
+        tvResultado.setText(getText(R.string.mensajeResultado) + " " + resultado);
     }
 }
