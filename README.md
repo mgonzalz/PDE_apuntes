@@ -1,6 +1,8 @@
 # PDE - Apuntes de Android Studio
 
-## Clase 1. Introducción a Android Studio
+## Clase 1. Introducción a Andr
+
+oid Studio
 
 ### 1. Creación del proyecto
 
@@ -163,3 +165,103 @@ startActivity(intent);
 ```
 
 **Diferencia principal:** en los Intents explícitos indicamos el componente de destino, mientras que en los implícitos indicamos la acción y Android determina qué aplicación puede realizarla.
+
+## Clase 3. ConstraintLayout, Intents y bases de datos SQLite
+
+### 1. Diseño de interfaces: Design y Blueprint
+
+Android Studio ofrece dos modos de visualización para diseñar interfaces gráficas:
+
+- **Design:** muestra el aspecto visual de la interfaz, incluyendo textos, botones, colores y dimensiones.
+- **Blueprint:** muestra una representación esquemática de los componentes, sus dimensiones y las restricciones que determinan su posición.
+
+Ambas vistas permiten trabajar con la distribución de los elementos dentro del layout.
+
+### 2. Restricciones en ConstraintLayout
+
+`ConstraintLayout` permite posicionar componentes estableciendo relaciones con otros elementos o con el contenedor principal (`parent`).
+
+Desde el editor visual encontramos distintas herramientas:
+
+- **Autoconnect:** cuando está activado, Android Studio puede generar restricciones automáticamente al colocar elementos. Si lo desactivamos, debemos establecerlas manualmente.
+- **Infer Constraints:** genera automáticamente restricciones según la posición actual de los componentes.
+- **Clear All Constraints:** elimina todas las restricciones del layout.
+- **Clear Constraints of Selection:** elimina únicamente las restricciones de los componentes seleccionados.
+
+![Opciones de restricciones](imgs/infer-options.png)
+
+Las restricciones también pueden configurarse manualmente. Por ejemplo, si asociamos los extremos superior e inferior de un componente al `parent`, podemos ajustar su posición vertical mediante el *vertical bias*, manteniendo ambas restricciones.
+
+También podemos modificar las restricciones y sus propiedades desde el panel **Attributes → Layout**.
+
+![Configuración de restricciones desde Attributes](imgs/infer-options-attributes.png)
+
+### 3. Navegación mediante Intents
+
+Un `Intent` es un objeto que permite solicitar acciones a otros componentes de Android.
+
+Existen dos tipos principales:
+
+**Intent explícito:** indicamos directamente la actividad que queremos iniciar. Se utiliza habitualmente para navegar entre pantallas de nuestra aplicación.
+
+```java
+btSiguiente.setOnClickListener(v -> {
+    Intent intent = new Intent(this, SecondActivity.class);
+    startActivity(intent);
+});
+```
+
+- `setOnClickListener()`: detecta la pulsación del botón.
+- `new Intent(this, SecondActivity.class)`: crea un Intent indicando la actividad actual como contexto y la clase de la actividad de destino.
+- `startActivity(intent)`: inicia la nueva actividad.
+
+**Intent implícito:** indicamos una acción sin especificar directamente el componente que debe ejecutarla. Android busca aplicaciones compatibles y determina cómo resolver la solicitud.
+
+```java
+Intent intent = new Intent(
+    Intent.ACTION_VIEW,
+    Uri.parse("https://www.google.com")
+);
+startActivity(intent);
+```
+
+### 4. Introducción a bases de datos SQLite
+
+Android permite utilizar **SQLite** para almacenar información de forma local en una base de datos relacional.
+
+Para organizar el código relacionado con la base de datos:
+
+1. Hacemos clic derecho sobre el paquete principal del proyecto.
+2. Seleccionamos **New → Package**.
+3. Creamos un paquete llamado `db`.
+4. Dentro del paquete, creamos una clase Java para gestionar la base de datos.
+
+Esta clase puede heredar de `SQLiteOpenHelper`, una clase abstracta de Android que facilita la creación y actualización de bases de datos SQLite.
+
+```java
+public class DatabaseHelper extends SQLiteOpenHelper {
+
+    public DatabaseHelper(Context context) {
+        super(context, "app.db", null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        // Crear las tablas de la base de datos
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase db,
+                          int oldVersion,
+                          int newVersion) {
+        // Gestionar los cambios de versión
+    }
+}
+```
+
+Al extender `SQLiteOpenHelper`, Android Studio puede solicitar implementar los métodos abstractos obligatorios mediante **Implement Methods**:
+
+- `onCreate()`: se ejecuta cuando es necesario crear la base de datos por primera vez.
+- `onUpgrade()`: se ejecuta cuando se actualiza la versión de una base de datos existente.
+
+**Concepto clave:** `SQLiteOpenHelper` facilita la gestión de la creación y las versiones de una base de datos SQLite local.
